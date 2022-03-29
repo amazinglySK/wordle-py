@@ -1,7 +1,5 @@
 # Wordle-Py
 
----
-
 _Wordle but in python_
 
 ## Installation
