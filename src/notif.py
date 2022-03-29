@@ -1,16 +1,22 @@
+from button import Button
 from settings import *
 import pygame
 
-class Notification:
+class Notification_Box:
     def __init__(self, message : str):
-        self.x = 0
-        self.y = 0
+        self.x = 800
+        self.y = 600
         self.msg = message
-        self.txt_surface = FONT.render(self.msg, True, COLORS.MISMATCH)
-        self.rect = pygame.Rect(self.x, self.y, self.txt_surface.get_width(), self.txt_surface.get_height())
+        self.visible = False
+        self.box = Button(self.msg, (self.x, self.y), COLORS.INCORRECT, COLORS.DEFAULT,padding=10, is_centered=True, text_is_centered=True, font = NORMAL_FONT)
 
-    def show(self, win : pygame.Surface):
-        win.blit(self.txt_surface, (self.x, self.y))
+    def render(self, win : pygame.Surface):
+        if not self.visible:
+            return
+        self.box.render(win)
+
+    def update_msg(self, message, win):
+        self.msg = message
+        win.fill(COLORS.BACKGROUND)
+        self.box = Button(self.msg, (self.x, self.y), COLORS.INCORRECT, COLORS.DEFAULT,padding=10, is_centered=True, text_is_centered=True, font = NORMAL_FONT)
         
-    def delete(self):
-        del self

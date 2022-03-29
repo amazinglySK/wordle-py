@@ -2,6 +2,7 @@ import pygame
 
 pygame.init()
 FONT = pygame.font.Font('assets/game_font.ttf', 40)
+NORMAL_FONT = pygame.font.SysFont(None, 30)
 HEIGHT = 700
 WIDTH= 1080
 FPS= 60

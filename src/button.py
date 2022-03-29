@@ -1,14 +1,13 @@
-from turtle import color
 import pygame
 from textbox import Text
 from settings import *
 
 
 class Button:
-    def __init__(self, txt : str, pos : tuple, txt_color : tuple, bg_color : tuple, padding : int = 0, is_centered = False):
+    def __init__(self, txt : str, pos : tuple, txt_color : tuple, bg_color : tuple, padding : int = 0, is_centered = False, text_is_centered : bool = True, font = FONT):
         self.bg = bg_color
         self.visible = True
-        self.text = Text(txt, pos, txt_color)
+        self.text = Text(txt, pos, txt_color, text_is_centered, font)
         self.x, self.y = pos if not is_centered else (pos[0] - self.text.width//2 - padding, pos[1] - self.text.height//2 - padding)
         self.rect = pygame.Rect(self.x, self.y, self.text.width + padding*2, self.text.height + padding*2)
 

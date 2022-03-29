@@ -18,6 +18,14 @@ class Board:
         self.tile_groups = []
         self.tile_groups_remaining = []
 
+    def activation_only(func):
+        def wrapper(self, *args, **kwargs):
+            if not self.visible:
+                return
+            func(self, *args, **kwargs)
+        return wrapper
+
+    # @activation_only
     def create(self, center : tuple, height : int, width : int, gap : int, marginx = 0, marginy = 0):
 
         self.board_width = self.cols*width + gap*(self.cols - 1)
@@ -42,6 +50,7 @@ class Board:
         self.word = choose_word().upper()
         print(self.word)
 
+
     def render(self, win : pygame.Surface):
         if not self.visible:
             return
@@ -56,8 +65,9 @@ class Board:
         self.tile_groups_remaining = [x for x in self.tile_groups]
         self.tile_groups_remaining[0].tiles[0].active = True
 
-    def handleEvents(self, event : pygame.event.Event, keypad) -> bool | NoneType:
-
+    # @activation_only
+    def handleEvents(self, event : pygame.event.Event, keypad, notif, win) -> bool | NoneType:
+        if not self.visible: return
         if len(self.tile_groups_remaining) == 0:
             return False
         group = self.tile_groups_remaining[0]
@@ -65,8 +75,7 @@ class Board:
         group.update_status()
         word = group.lock_group(event)
         if word == False:
-            # notification = Notification()
-            print("Not in word list")
+            notif.update_msg("Not in word list", win)
             group.tiles[4].active = True
             return
         elif word:
