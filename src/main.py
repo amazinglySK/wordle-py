@@ -13,7 +13,7 @@ def music_init():
     mixer.init()
     mixer.music.load("assets/musik.mp3")
     mixer.music.set_volume(0.5)
-    mixer.music.play(-1, 26.0)
+    mixer.music.play(-1)
 
 
 def screen_initialize() -> Surface:
@@ -51,7 +51,7 @@ def main():
 
     WIN.fill(COLORS.BACKGROUND)
 
-    # music_init()
+    music_init()
 
     while running:
         clock.tick(FPS)
