@@ -1,6 +1,8 @@
 # Wordle-Py
 
-_Wordle but in python_
+<img src = "imgs/banner.png" style = "display:inline-block;margin : 10px auto; max-width : 300px;"/>
+
+"_Wordle but in python_"
 
 ## Installation
 
