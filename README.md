@@ -1,6 +1,6 @@
 # Wordle-Py
 
-<img src = "imgs/banner.png" style = "display:inline-block;margin : 10px auto; max-width : 100px;"/>
+<img src = "imgs/banner.png" style = "display:inline-block; margin : 10px auto; width : 100px;"/>
 
 "_Wordle but in python_"
 
