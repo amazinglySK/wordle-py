@@ -34,10 +34,8 @@ def main():
     keypad = Keypad((800, HEIGHT//2), COLORS.DEFAULT)
     keypad.create(60, 60, 10)
 
-    start_screen = Start_Screen(WIDTH, HEIGHT - 50)
-    game_over = Game_Over(WIDTH, HEIGHT - 50)
-
-    # WIN.fill(COLORS.BACKGROUND)
+    start_screen = Start_Screen(WIDTH, HEIGHT)
+    game_over = Game_Over(WIDTH, HEIGHT)
 
     title = Text('WORDLE', (WIDTH//2, 40), COLORS.ACCENT)
 
@@ -59,7 +57,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
             start = start_screen.handle(event, WIN)
-            if start:
+            if start == "Start":
                 if played:
                     game_board.restart()
                     keypad.reset()
@@ -77,7 +75,6 @@ def main():
                 keypad.reset()
                 game_board.restart()
                 notif.update_msg('Game started', WIN)
-                # WIN.fill(COLORS.BACKGROUND)
             elif choice == "Exit":
                 played = True
                 start_screen.visible=True

@@ -9,22 +9,13 @@ class Start_Screen:
         self.rules_button = Button('HOW TO PLAY', (width//2, height//2 +100), COLORS.ACCENT, 10, 10, is_centered=True)
         self.buttons = [self.start_button, self.rules_button]
 
-    def activation_only(func):
-        def wrapper(self, *args, **kwargs):
-            if not self.visible:
-                return
-            func(self, *args, **kwargs)
-        return wrapper
-
-    @activation_only
     def render(self, win : pygame.Surface):
+        if not self.visible : return
         for button in self.buttons:
             button.render(win)
     
-    # @activation_only
-    def handle(self, event : pygame.event.Event, win : pygame.Surface) -> bool:
+    def handle(self, event : pygame.event.Event) -> bool:
         if self.start_button.click(event):
             self.visible = False
-            # win.fill(COLORS.BACKGROUND)
-            return True
+            return "Start"
  
