@@ -13,6 +13,6 @@
 
 ## TODO
 
-- [ ] Implement game over screen
-- [ ] Implement notification system
+- [x] Implement game over screen
+- [x] Implement notification system
 - [ ] Manage user data
